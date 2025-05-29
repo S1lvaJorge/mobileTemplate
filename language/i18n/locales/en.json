@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "Mobile Template"
+  },
+  "tabs": {
+    "one": {
+      "title": "Tab One"
+    },
+    "two": {
+      "title": "Tab Two"
+    }
+  },
+  "modal": {
+    "title": "Modal"
+  },
+  "notFound": {
+    "title": "Oops!",
+    "message": "This screen doesn't exist.",
+    "goHome": "Go to home screen!"
+  },
+  "editScreen": {
+    "openCode": "Open up the code for this screen:",
+    "changeText": "Change any of the text, save the file, and your app will automatically update.",
+    "updateHelp": "Tap here if your app doesn't automatically update after making changes"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "Modelo Móvel"
+  },
+  "tabs": {
+    "one": {
+      "title": "Aba Um"
+    },
+    "two": {
+      "title": "Aba Dois"
+    }
+  },
+  "modal": {
+    "title": "Modal"
+  },
+  "notFound": {
+    "title": "Ops!",
+    "message": "Esta tela não existe.",
+    "goHome": "Ir para a tela inicial!"
+  },
+  "editScreen": {
+    "openCode": "Abra o código para esta tela:",
+    "changeText": "Altere qualquer texto, salve o arquivo e seu aplicativo será atualizado automaticamente.",
+    "updateHelp": "Toque aqui se seu aplicativo não atualizar automaticamente após fazer alterações"
+  }
+}

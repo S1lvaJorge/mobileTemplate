@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "Plantilla Móvil"
+  },
+  "tabs": {
+    "one": {
+      "title": "Pestaña Uno"
+    },
+    "two": {
+      "title": "Pestaña Dos"
+    }
+  },
+  "modal": {
+    "title": "Modal"
+  },
+  "notFound": {
+    "title": "¡Ups!",
+    "message": "Esta pantalla no existe.",
+    "goHome": "¡Ir a la pantalla principal!"
+  },
+  "editScreen": {
+    "openCode": "Abre el código para esta pantalla:",
+    "changeText": "Cambia cualquier texto, guarda el archivo y tu aplicación se actualizará automáticamente.",
+    "updateHelp": "Toca aquí si tu aplicación no se actualiza automáticamente después de hacer cambios"
+  }
+}
