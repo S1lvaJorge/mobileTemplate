@@ -4,14 +4,19 @@ import { useTranslation } from 'react-i18next';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
-export default function TabOneScreen() {
+/**
+ * Tab Two Screen Component
+ * 
+ * This screen component is returned from /src/app/(tabs)/two.tsx
+ */
+export default function TabTwoScreen() {
   const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('tabs.one.title')}</Text>
+      <Text style={styles.title}>{t('tabs.two.title')}</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <EditScreenInfo path="src/app/(tabs)/two.tsx" />
     </View>
   );
 }
@@ -32,3 +37,4 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 });
+
