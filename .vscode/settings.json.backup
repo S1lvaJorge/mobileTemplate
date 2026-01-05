@@ -1,0 +1,7 @@
+{
+    "i18n-ally.localesPaths": [
+        "language",
+        "language/i18n",
+        "language/i18n/locales"
+    ]
+}

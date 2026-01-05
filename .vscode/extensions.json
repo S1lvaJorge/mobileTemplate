@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "expo.vscode-expo-tools",
+    "ms-vscode.vscode-typescript-next",
+    "msjsdiag.vscode-react-native",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "dsznajder.es7-react-js-snippets",
+    "yoavbls.pretty-ts-errors",
+    "lokalise.i18n-ally",
+    "christian-kohler.path-intellisense",
+    "Cardinal90.multi-cursor-case-preserve",
+    "usernamehw.errorlens",
+    "naumovs.color-highlight",
+    "eamodio.gitlens",
+    "gruntfuggly.todo-tree",
+    "ms-vsliveshare.vsliveshare",
+    "mikestead.dotenv"
+  ]
+}
