@@ -1,19 +1,24 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import Colors from '@/constants/Colors'
+import React from 'react'
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native'
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from './useColorScheme';
+import { useColorScheme } from './useColorScheme'
 
 interface PrimaryButtonProps {
-  title: string;
-  onPress: () => void;
-  disabled?: boolean;
-  loading?: boolean;
+  title: string
+  onPress: () => void
+  disabled?: boolean
+  loading?: boolean
 }
 
 /**
  * PrimaryButton Component
- * 
+ *
  * Example of a reusable button component.
  * This demonstrates:
  * - Component organization in the components folder
@@ -21,12 +26,20 @@ interface PrimaryButtonProps {
  * - Theme-aware styling
  * - Loading and disabled states
  */
-export function PrimaryButton({ title, onPress, disabled = false, loading = false }: PrimaryButtonProps) {
-  const colorScheme = useColorScheme();
-  const colors = Colors[colorScheme ?? 'light'];
+export function PrimaryButton({
+  title,
+  onPress,
+  disabled = false,
+  loading = false,
+}: PrimaryButtonProps) {
+  const colorScheme = useColorScheme()
+  const colors = Colors[colorScheme ?? 'light']
 
   return (
     <TouchableOpacity
+      activeOpacity={0.8}
+      disabled={disabled || loading}
+      onPress={onPress}
       style={[
         styles.button,
         {
@@ -34,9 +47,6 @@ export function PrimaryButton({ title, onPress, disabled = false, loading = fals
           opacity: disabled || loading ? 0.6 : 1,
         },
       ]}
-      onPress={onPress}
-      disabled={disabled || loading}
-      activeOpacity={0.8}
     >
       {loading ? (
         <ActivityIndicator color="#fff" />
@@ -44,7 +54,7 @@ export function PrimaryButton({ title, onPress, disabled = false, loading = fals
         <Text style={styles.buttonText}>{title}</Text>
       )}
     </TouchableOpacity>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -61,5 +71,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
-});
-
+})

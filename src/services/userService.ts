@@ -1,15 +1,15 @@
-import type { User, ApiResponse } from '@/types';
+import type { ApiResponse, User } from '@/types'
 
-import * as userApi from '@/server/userApi';
-import { validateEmail } from '@/utils/validateEmail';
+import * as userApi from '@/server/userApi'
+import { validateEmail } from '@/utils/validateEmail'
 
 /**
  * User Service
- * 
+ *
  * Service layer that contains business logic.
  * This demonstrates the separation between API calls (data layer)
  * and business logic (service layer).
- * 
+ *
  * Services can:
  * - Transform data
  * - Add validation
@@ -29,10 +29,10 @@ export async function getUserById(userId: string): Promise<ApiResponse<User>> {
       data: null as User,
       success: false,
       message: 'User ID is required',
-    };
+    }
   }
 
-  return userApi.getUserById(userId);
+  return userApi.getUserById(userId)
 }
 
 /**
@@ -40,14 +40,16 @@ export async function getUserById(userId: string): Promise<ApiResponse<User>> {
  * @param userData - User data to create
  * @returns Promise with created user or error
  */
-export async function createUser(userData: Omit<User, 'id' | 'createdAt'>): Promise<ApiResponse<User>> {
+export async function createUser(
+  userData: Omit<User, 'id' | 'createdAt'>
+): Promise<ApiResponse<User>> {
   // Validate email before creating user
   if (!validateEmail(userData.email)) {
     return {
       data: null as User,
       success: false,
       message: 'Invalid email address',
-    };
+    }
   }
 
   // Add business logic (e.g., generate ID, set createdAt, etc.)
@@ -55,9 +57,9 @@ export async function createUser(userData: Omit<User, 'id' | 'createdAt'>): Prom
     ...userData,
     id: `user_${Date.now()}`, // Example: generate ID
     createdAt: new Date().toISOString(),
-  };
+  }
 
-  return userApi.createUser(userWithMetadata as User);
+  return userApi.createUser(userWithMetadata as User)
 }
 
 /**
@@ -65,14 +67,13 @@ export async function createUser(userData: Omit<User, 'id' | 'createdAt'>): Prom
  * @returns Promise with array of users or error
  */
 export async function getAllUsers(): Promise<ApiResponse<User[]>> {
-  const response = await userApi.getAllUsers();
-  
+  const response = await userApi.getAllUsers()
+
   // Add business logic (e.g., sorting, filtering, etc.)
   if (response.success && response.data) {
     // Example: sort users by name
-    response.data.sort((a, b) => a.name.localeCompare(b.name));
+    response.data.sort((a, b) => a.name.localeCompare(b.name))
   }
 
-  return response;
+  return response
 }
-

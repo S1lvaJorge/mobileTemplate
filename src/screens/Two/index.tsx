@@ -1,24 +1,27 @@
-import { StyleSheet } from 'react-native';
-import { useTranslation } from 'react-i18next';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import EditScreenInfo from '@/components/EditScreenInfo'
+import { Text, View } from '@/components/Themed'
+import { useTranslation } from 'react-i18next'
+import { StyleSheet } from 'react-native'
 
 /**
  * Tab Two Screen Component
- * 
+ *
  * This screen component is returned from /src/app/(tabs)/two.tsx
  */
 export default function TabTwoScreen() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('tabs.two.title')}</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View
+        darkColor="rgba(255,255,255,0.1)"
+        lightColor="#eee"
+        style={styles.separator}
+      />
       <EditScreenInfo path="src/app/(tabs)/two.tsx" />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -36,5 +39,4 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-});
-
+})

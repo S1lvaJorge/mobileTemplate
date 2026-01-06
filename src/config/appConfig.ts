@@ -1,6 +1,6 @@
 /**
  * Application configuration
- * 
+ *
  * Centralized configuration for the app.
  * This makes it easy to manage environment-specific settings.
  */
@@ -23,5 +23,4 @@ export const appConfig = {
     enableAnalytics: true,
     enableErrorReporting: true,
   },
-} as const;
-
+} as const

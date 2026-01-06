@@ -1,6 +1,6 @@
 /**
  * Date formatting utilities
- * 
+ *
  * Example utility function to format dates consistently across the app.
  * This demonstrates how to organize reusable utility functions.
  */
@@ -11,17 +11,17 @@
  * @returns Formatted date string (e.g., "January 15, 2024")
  */
 export function formatDate(date: string | Date): string {
-  const dateObj = typeof date === 'string' ? new Date(date) : date;
-  
+  const dateObj = typeof date === 'string' ? new Date(date) : date
+
   if (isNaN(dateObj.getTime())) {
-    return 'Invalid Date';
+    return 'Invalid Date'
   }
 
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }).format(dateObj);
+  }).format(dateObj)
 }
 
 /**
@@ -30,16 +30,15 @@ export function formatDate(date: string | Date): string {
  * @returns Formatted date string (e.g., "01/15/2024")
  */
 export function formatDateShort(date: string | Date): string {
-  const dateObj = typeof date === 'string' ? new Date(date) : date;
-  
+  const dateObj = typeof date === 'string' ? new Date(date) : date
+
   if (isNaN(dateObj.getTime())) {
-    return 'Invalid Date';
+    return 'Invalid Date'
   }
 
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-  }).format(dateObj);
+  }).format(dateObj)
 }
-

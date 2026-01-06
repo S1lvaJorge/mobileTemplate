@@ -1,52 +1,55 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { useTranslation } from 'react-i18next';
+import Colors from '@/constants/Colors'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { StyleSheet } from 'react-native'
 
-import { ExternalLink } from './ExternalLink';
-import { MonoText } from './StyledText';
-import { Text, View } from './Themed';
-
-import Colors from '@/constants/Colors';
+import { ExternalLink } from './ExternalLink'
+import { MonoText } from './StyledText'
+import { Text, View } from './Themed'
 
 export default function EditScreenInfo({ path }: { path: string }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <View>
       <View style={styles.getStartedContainer}>
         <Text
-          style={styles.getStartedText}
+          darkColor="rgba(255,255,255,0.8)"
           lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
+          style={styles.getStartedText}
+        >
           {t('editScreen.openCode')}
         </Text>
 
         <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
+          lightColor="rgba(0,0,0,0.05)"
+          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
+        >
           <MonoText>{path}</MonoText>
         </View>
 
         <Text
-          style={styles.getStartedText}
+          darkColor="rgba(255,255,255,0.8)"
           lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
+          style={styles.getStartedText}
+        >
           {t('editScreen.changeText')}
         </Text>
       </View>
 
       <View style={styles.helpContainer}>
         <ExternalLink
+          href="https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet"
           style={styles.helpLink}
-          href="https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet">
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+        >
+          <Text lightColor={Colors.light.tint} style={styles.helpLinkText}>
             {t('editScreen.updateHelp')}
           </Text>
         </ExternalLink>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -77,4 +80,4 @@ const styles = StyleSheet.create({
   helpLinkText: {
     textAlign: 'center',
   },
-});
+})

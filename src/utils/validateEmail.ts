@@ -1,6 +1,6 @@
 /**
  * Validation utilities
- * 
+ *
  * Example utility function for email validation.
  * This demonstrates how to organize validation logic.
  */
@@ -12,12 +12,12 @@
  */
 export function validateEmail(email: string): boolean {
   if (!email || typeof email !== 'string') {
-    return false;
+    return false
   }
 
   // Basic email regex pattern
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email.trim());
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email.trim())
 }
 
 /**
@@ -27,9 +27,8 @@ export function validateEmail(email: string): boolean {
  */
 export function validatePassword(password: string): boolean {
   if (!password || typeof password !== 'string') {
-    return false;
+    return false
   }
 
-  return password.length >= 8;
+  return password.length >= 8
 }
-

@@ -1,22 +1,22 @@
-import type { ApiResponse, ApiError } from '@/types';
+import type { ApiError, ApiResponse } from '@/types'
 
-import { appConfig } from '@/config/appConfig';
+import { appConfig } from '@/config/appConfig'
 
 /**
  * API Client
- * 
+ *
  * Example wrapper for API calls.
  * This demonstrates how to organize third-party library wrappers
  * and create a consistent API interface.
  */
 
 class ApiClient {
-  private baseUrl: string;
-  private timeout: number;
+  private baseUrl: string
+  private timeout: number
 
   constructor() {
-    this.baseUrl = appConfig.api.baseUrl;
-    this.timeout = appConfig.api.timeout;
+    this.baseUrl = appConfig.api.baseUrl
+    this.timeout = appConfig.api.timeout
   }
 
   /**
@@ -30,23 +30,24 @@ class ApiClient {
           'Content-Type': 'application/json',
         },
         signal: AbortSignal.timeout(this.timeout),
-      });
+      })
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
 
-      const data = await response.json();
+      const data = await response.json()
       return {
         data,
         success: true,
-      };
+      }
     } catch (error) {
       return {
         data: null as T,
         success: false,
-        message: error instanceof Error ? error.message : 'Unknown error occurred',
-      };
+        message:
+          error instanceof Error ? error.message : 'Unknown error occurred',
+      }
     }
   }
 
@@ -62,27 +63,27 @@ class ApiClient {
         },
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(this.timeout),
-      });
+      })
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
 
-      const data = await response.json();
+      const data = await response.json()
       return {
         data,
         success: true,
-      };
+      }
     } catch (error) {
       return {
         data: null as T,
         success: false,
-        message: error instanceof Error ? error.message : 'Unknown error occurred',
-      };
+        message:
+          error instanceof Error ? error.message : 'Unknown error occurred',
+      }
     }
   }
 }
 
 // Export a singleton instance
-export const apiClient = new ApiClient();
-
+export const apiClient = new ApiClient()

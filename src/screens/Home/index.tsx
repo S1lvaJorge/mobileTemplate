@@ -1,82 +1,88 @@
-import { useState } from 'react';
-import { StyleSheet, ScrollView, Alert } from 'react-native';
-import { useTranslation } from 'react-i18next';
-
-import { PrimaryButton, SecondaryButton } from '@/components';
-import { Text, View } from '@/components/Themed';
-import { useCounter } from '@/hooks';
-import { formatDate, validateEmail } from '@/utils';
-import * as userService from '@/services';
-import { appConfig } from '@/config/appConfig';
+import { PrimaryButton, SecondaryButton } from '@/components'
+import { Text, View } from '@/components/Themed'
+import { appConfig } from '@/config/appConfig'
+import { useCounter } from '@/hooks'
+import * as userService from '@/services'
+import { formatDate, validateEmail } from '@/utils'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Alert, ScrollView, StyleSheet } from 'react-native'
 
 /**
  * Home Screen Component
- * 
+ *
  * This screen component is returned from /src/app/(tabs)/index.tsx
- * 
+ *
  * This demonstrates the complete flow of the organized folder structure:
- * 
+ *
  * 1. COMPONENTS: Using reusable button components (PrimaryButton, SecondaryButton)
  * 2. HOOKS: Using custom hooks (useCounter) for stateful logic
  * 3. UTILS: Using utility functions (formatDate, validateEmail) for common operations
  * 4. SERVICES: Using service layer (userService) for business logic
  * 5. SERVER: Services internally use server/API layer (userApi) for data fetching
  * 6. CONFIG: Using app configuration (appConfig) for settings
- * 
+ *
  * Flow: Screen → Components/Hooks → Services → Server/API → Backend
  */
 export default function HomeScreen() {
-  const { t } = useTranslation();
-  
+  const { t } = useTranslation()
+
   // Example 1: Using a custom hook
   // Hooks encapsulate stateful logic and can be reused across components
-  const { count, increment, decrement, reset } = useCounter(0);
-  
+  const { count, increment, decrement, reset } = useCounter(0)
+
   // Example 2: Using utility functions
-  const [email] = useState('user@example.com');
-  const [testDate] = useState(new Date().toISOString());
-  
+  const [email] = useState('user@example.com')
+  const [testDate] = useState(new Date().toISOString())
+
   // Example 3: Using services (which internally use server/API)
   const handleFetchUser = async () => {
     try {
       // Service layer handles business logic and validation
-      const response = await userService.getUserById('user123');
-      
+      const response = await userService.getUserById('user123')
+
       if (response.success) {
-        Alert.alert('Success', `User fetched: ${response.data?.name || 'User data'}`);
+        Alert.alert(
+          'Success',
+          `User fetched: ${response.data?.name || 'User data'}`
+        )
       } else {
-        Alert.alert('Error', response.message || 'Failed to fetch user');
+        Alert.alert('Error', response.message || 'Failed to fetch user')
       }
     } catch (error) {
-      Alert.alert('Error', 'An error occurred while fetching user');
+      Alert.alert('Error', 'An error occurred while fetching user')
     }
-  };
-  
+  }
+
   // Example 4: Using utility functions for validation
   const handleValidateEmail = () => {
-    const isValid = validateEmail(email);
+    const isValid = validateEmail(email)
     Alert.alert(
       'Email Validation',
       `Email "${email}" is ${isValid ? 'valid' : 'invalid'}`
-    );
-  };
-  
+    )
+  }
+
   // Example 5: Using configuration
   const handleShowConfig = () => {
     Alert.alert(
       'App Configuration',
       `API Base URL: ${appConfig.api.baseUrl}\nApp Name: ${appConfig.app.name}\nVersion: ${appConfig.app.version}`
-    );
-  };
+    )
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
         <Text style={styles.title}>{t('tabs.one.title')}</Text>
         <Text style={styles.subtitle}>Folder Structure Examples</Text>
-        
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        
+
+        <View
+          darkColor="rgba(255,255,255,0.1)"
+          lightColor="#eee"
+          style={styles.separator}
+        />
+
         {/* Example 1: Using Custom Hooks */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>1. Custom Hooks (hooks/)</Text>
@@ -85,14 +91,18 @@ export default function HomeScreen() {
           </Text>
           <Text style={styles.counterText}>Count: {count}</Text>
           <View style={styles.buttonRow}>
-            <PrimaryButton title="Increment" onPress={increment} />
-            <SecondaryButton title="Decrement" onPress={decrement} />
+            <PrimaryButton onPress={increment} title="Increment" />
+            <SecondaryButton onPress={decrement} title="Decrement" />
           </View>
-          <SecondaryButton title="Reset" onPress={reset} />
+          <SecondaryButton onPress={reset} title="Reset" />
         </View>
-        
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        
+
+        <View
+          darkColor="rgba(255,255,255,0.1)"
+          lightColor="#eee"
+          style={styles.separator}
+        />
+
         {/* Example 2: Using Components */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>2. Components (components/)</Text>
@@ -100,19 +110,25 @@ export default function HomeScreen() {
             Reusable button components (PrimaryButton, SecondaryButton)
           </Text>
           <View style={styles.buttonRow}>
-            <PrimaryButton 
-              title="Primary Button" 
-              onPress={() => Alert.alert('Primary', 'Primary button pressed!')} 
+            <PrimaryButton
+              onPress={() => Alert.alert('Primary', 'Primary button pressed!')}
+              title="Primary Button"
             />
-            <SecondaryButton 
-              title="Secondary Button" 
-              onPress={() => Alert.alert('Secondary', 'Secondary button pressed!')} 
+            <SecondaryButton
+              onPress={() =>
+                Alert.alert('Secondary', 'Secondary button pressed!')
+              }
+              title="Secondary Button"
             />
           </View>
         </View>
-        
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        
+
+        <View
+          darkColor="rgba(255,255,255,0.1)"
+          lightColor="#eee"
+          style={styles.separator}
+        />
+
         {/* Example 3: Using Utils */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>3. Utilities (utils/)</Text>
@@ -122,39 +138,51 @@ export default function HomeScreen() {
           <Text style={styles.infoText}>
             Formatted Date: {formatDate(testDate)}
           </Text>
-          <PrimaryButton title="Validate Email" onPress={handleValidateEmail} />
+          <PrimaryButton onPress={handleValidateEmail} title="Validate Email" />
         </View>
-        
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        
+
+        <View
+          darkColor="rgba(255,255,255,0.1)"
+          lightColor="#eee"
+          style={styles.separator}
+        />
+
         {/* Example 4: Using Services */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>4. Services (services/)</Text>
           <Text style={styles.description}>
             Service layer handles business logic and uses server/API layer
           </Text>
-          <PrimaryButton 
-            title="Fetch User (Service)" 
-            onPress={handleFetchUser} 
+          <PrimaryButton
+            onPress={handleFetchUser}
+            title="Fetch User (Service)"
           />
           <Text style={styles.noteText}>
             Note: This will fail in demo (no backend), but shows the flow
           </Text>
         </View>
-        
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        
+
+        <View
+          darkColor="rgba(255,255,255,0.1)"
+          lightColor="#eee"
+          style={styles.separator}
+        />
+
         {/* Example 5: Using Config */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>5. Configuration (config/)</Text>
           <Text style={styles.description}>
             App-wide configuration settings
           </Text>
-          <PrimaryButton title="Show Config" onPress={handleShowConfig} />
+          <PrimaryButton onPress={handleShowConfig} title="Show Config" />
         </View>
-        
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        
+
+        <View
+          darkColor="rgba(255,255,255,0.1)"
+          lightColor="#eee"
+          style={styles.separator}
+        />
+
         {/* Architecture Flow Explanation */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Architecture Flow</Text>
@@ -167,7 +195,7 @@ export default function HomeScreen() {
         </View>
       </View>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -238,5 +266,4 @@ const styles = StyleSheet.create({
     marginTop: 8,
     textAlign: 'center',
   },
-});
-
+})

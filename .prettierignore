@@ -1,0 +1,15 @@
+node_modules/
+.expo/
+.expo-shared/
+dist/
+build/
+coverage/
+*.min.js
+*.min.css
+android/
+ios/
+*.lock
+bun.lock
+package-lock.json
+yarn.lock
+eslint.config.mjs

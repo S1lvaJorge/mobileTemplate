@@ -25,12 +25,14 @@ A modern, feature-rich React Native mobile application template built with Expo,
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/mobileTemplate.git
 cd mobileTemplate
 ```
 
 2. Install dependencies:
+
 ```bash
 # Using npm
 npm install
@@ -43,6 +45,7 @@ bun install
 ```
 
 3. Start the development server:
+
 ```bash
 npm start
 # or
@@ -124,6 +127,7 @@ The app follows a clear data flow pattern:
 ### 🎯 Example Usage
 
 Check out `src/screens/Home/index.tsx` to see a complete example demonstrating:
+
 - Using custom hooks (`useCounter`)
 - Using reusable components (`PrimaryButton`, `SecondaryButton`)
 - Using utility functions (`formatDate`, `validateEmail`)

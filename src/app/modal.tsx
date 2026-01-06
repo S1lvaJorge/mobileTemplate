@@ -1,23 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
-import { useTranslation } from 'react-i18next';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import EditScreenInfo from '@/components/EditScreenInfo'
+import { Text, View } from '@/components/Themed'
+import { StatusBar } from 'expo-status-bar'
+import { useTranslation } from 'react-i18next'
+import { Platform, StyleSheet } from 'react-native'
 
 export default function ModalScreen() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('modal.title')}</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View
+        darkColor="rgba(255,255,255,0.1)"
+        lightColor="#eee"
+        style={styles.separator}
+      />
       <EditScreenInfo path="app/modal.tsx" />
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -35,4 +38,4 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-});
+})
