@@ -2,9 +2,11 @@ import { PrimaryButton, SecondaryButton } from '@/components'
 import { Text, View } from '@/components/Themed'
 import { appConfig } from '@/config/appConfig'
 import { useCounter } from '@/hooks'
+import { useNotifications } from '@/hooks/useNotifications'
 import * as userService from '@/services'
 import { formatDate, validateEmail } from '@/utils'
-import { useState } from 'react'
+import * as Notifications from 'expo-notifications'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Alert, ScrollView, StyleSheet } from 'react-native'
 
@@ -26,6 +28,32 @@ import { Alert, ScrollView, StyleSheet } from 'react-native'
  */
 export default function HomeScreen() {
   const { t } = useTranslation()
+  const { trigger } = useNotifications()
+
+  useEffect(() => {
+    ;(async () => {
+      const { status } = await Notifications.requestPermissionsAsync()
+      if (status !== 'granted') {
+        Alert.alert(
+          'Permission not granted',
+          'Please grant permission to receive notifications'
+        )
+      }
+    })()
+  }, [])
+
+  const triggerNotification = async () => {
+    trigger({
+      title: 'Hello 👋',
+      body: 'This is a local notification!',
+      data: { userId: 123 },
+      badge: 1,
+      sound: 'default',
+    })
+
+    const token = (await Notifications.getDevicePushTokenAsync()).data
+    console.log(token)
+  }
 
   // Example 1: Using a custom hook
   // Hooks encapsulate stateful logic and can be reused across components
@@ -192,6 +220,20 @@ export default function HomeScreen() {
           <Text style={styles.noteText}>
             Check the code comments in each file to understand the structure!
           </Text>
+        </View>
+
+        {/* Example 6: Using Notifications */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            6. Notifications (expo-notifications)
+          </Text>
+          <Text style={styles.description}>
+            Using expo-notifications for scheduling notifications
+          </Text>
+          <PrimaryButton
+            onPress={triggerNotification}
+            title="Trigger Notification"
+          />
         </View>
       </View>
     </ScrollView>
