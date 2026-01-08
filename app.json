@@ -2,7 +2,7 @@
   "expo": {
     "name": "mobileTemplate",
     "slug": "mobileTemplate",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "mobiletemplate",
@@ -16,8 +16,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.jorgesilva1997.mobileTemplate",
-      "buildNumber": "1.0.0",
-      "appleTeamId": "C52R62V8X3"
+      "buildNumber": "1.0.1",
+      "appleTeamId": "UU7QW9WAPG"
     },
     "android": {
       "permissions": [

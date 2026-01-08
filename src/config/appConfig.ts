@@ -15,7 +15,7 @@ export const appConfig = {
   // App Information
   app: {
     name: 'Mobile Template',
-    version: '1.0.0',
+    version: '1.0.1',
   },
 
   // Feature Flags
