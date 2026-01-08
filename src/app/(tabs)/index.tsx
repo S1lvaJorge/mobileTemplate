@@ -8,6 +8,7 @@
  * - app/ contains route files (Expo Router)
  * - screens/ contains the actual screen components
  */
-import HomeScreen from '@/screens/Home'
+// import HomeScreen from '@/screens/Home'
+import HomeScreen from 'src/screens/Home'
 
 export default HomeScreen

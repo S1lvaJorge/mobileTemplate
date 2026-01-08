@@ -14,6 +14,8 @@ import '../language/i18n' // Import i18n configuration
 
 import { useEffect } from 'react'
 
+import { configureNotifications } from '../lib/notifications'
+
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -37,6 +39,11 @@ export default function RootLayout() {
   useEffect(() => {
     if (error) throw error
   }, [error])
+
+  // Notifications
+  useEffect(() => {
+    configureNotifications()
+  }, [])
 
   useEffect(() => {
     if (loaded) {

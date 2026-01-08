@@ -14,12 +14,26 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jorgesilva1997.mobileTemplate",
+      "buildNumber": "1.0.0",
+      "appleTeamId": "C52R62V8X3"
     },
     "android": {
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "notification": {
+        "icon": "./assets/images/notification.png",
+        "color": "#00AAFF",
+        "defaultChannel": "default",
+        "sounds": [
+          "notification-sound.wav"
+        ]
       },
       "edgeToEdgeEnabled": true,
       "package": "com.jorgesilva1997.mobileTemplate"
@@ -33,7 +47,8 @@
       "expo-router",
       "expo-font",
       "expo-localization",
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-notifications"
     ],
     "experiments": {
       "typedRoutes": true
